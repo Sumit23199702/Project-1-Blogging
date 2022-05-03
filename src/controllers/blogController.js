@@ -179,7 +179,7 @@ const deleteBlog = async function (req, res) {
       return res.status(404).send({status:false,msg:"this blog has been deleted by You"})
      }
 
-    let deletedBlog = await blogFound.update(
+    let deletedBlog = await blogModel.findOneAndUpdate({_id : blog},
       { $set: { isdeleted: true }, deletedAt: Date.now() },
       { new: true }
     )
