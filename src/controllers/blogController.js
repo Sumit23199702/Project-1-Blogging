@@ -138,7 +138,7 @@ const putBlog = async function (req, res) {
     let id = req.params.blogId
     
     if(!id){ 
-        return res.statu(400).send({status:false, msg :"blogId must be present in request param "})
+        return res.status(400).send({status:false, msg :"blogId must be present in request param "})
     }
 
     if(!mongoose.isValidObjectId(id)){
