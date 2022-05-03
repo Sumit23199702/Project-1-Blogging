@@ -123,24 +123,7 @@ const putBlog = async function(req, res) {
     if(!mongoose.isValidObjectId(id)){
       return res.status(400).send({status: false, msg: "Please provide a Valid blogId"})
     }
-    
-    let {tags, category, subcategory} = data
 
-    if(tags){
-      if(! Array.isArray(tags)){
-        return res.status(400).send({status : false, msg : "input tags must be an Array"})
-      }
-    }
-
-    if(!category){
-      return res.status(400).send({status : false, msg : "category is an important field"})
-    }
-
-    if(subcategory){
-      if(! Array.isArray(subcategory)){
-        return res.status(400).send({status : false, msg : "input subcategory must be an Array"})
-      }
-    }
 
     let blogFound = await blogModel.findOne({_id : id})
 
@@ -257,10 +240,7 @@ const blogByQuery = async (req, res) => {
       { new: true }               
     );
 
-    if (!deleteByQuery){
-      return res.status(404).send({ status: false, message: "No such blog found" });
-    } 
-    else{
+    if (deleteByQuery){
     res.status(200).send({ status: true, msg : "Your blogs have been deleted", data: deleteByQuery })
     }
 } 
