@@ -27,7 +27,6 @@ const createBlog = async function (req, res) {
       return res.status(400).send({status : false, msg : "Category is a required"})
     }
 
-
     let findBlog = await blogModel.findOne(blog)
  
     if(findBlog){

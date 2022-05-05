@@ -39,5 +39,3 @@ exports.validate = function (req,res,next){
 
         res.status(400).send({status : false, msg: error[0].msg})
     }
-
-    
